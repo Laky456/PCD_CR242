@@ -66,6 +66,8 @@ class Sum1 extends Thread
   public void run() {
     int suma1=0,suma2=0,suma=0;
     int i=from;
+
+    int sum_t = 0;
     while(i!=to){
       if(tablou[i] % 2 == 1){
         suma1=i;
@@ -77,6 +79,7 @@ class Sum1 extends Thread
             suma2=i;
             suma = tablou[suma1] + tablou[suma2];
             System.out.println(getName()+": Suma1=" + tablou[suma1] + " ;  Suma2=" + tablou[suma2] + ";  Suma=" + suma + ".");
+            sum_t += suma;
             break;
           }
           i += step;
@@ -87,6 +90,8 @@ class Sum1 extends Thread
       if((i < to && step < 0) || (i > to && step > 0)) break;
 
     }
+    
+      System.out.println(getName()+ " Suma totala: " + sum_t);
   }
 }
 
@@ -106,19 +111,24 @@ class Sum2 extends Thread
   public void run() {
     int[] arr = new int[101];
     int k = 0;
+    int sum_t = 0;
     int sum;
-    for(int i =from;(i < to && step > 0) || (i > to && step < 0);i+=step){
+    for(int i =from;(i <= to && step > 0) || (i >= to && step < 0);i+=step){
       if(tablou[i] %2 == 1) {
         arr[k] = tablou[i];
         k++;
       }
     }
-    if(k %2 == 0) k--;
+    if(k %2 == 1) k--;
 
     for(int i =0;i<k;i+=2){
       sum = arr[i] + arr[i+1];
       System.out.println(getName()+": Sum1=" + arr[i]+ " ;  Sum2=" + arr[i+1] + ";  Sum=" + sum + ".");
+      sum_t += sum ;
     }
+
+
+      System.out.println(getName()+ " Suma totala: " + sum_t);
   }
   
 }
