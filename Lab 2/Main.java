@@ -1,6 +1,7 @@
 public class Main {
 	public static void main(String args[]) throws InterruptedException {
-	//Varianta 1: https://app.diagrams.net/#LGrup1.drawio#%7B%22pageId%22%3A%22QkcJFsA3rlYDPUF23g55%22%7D
+	//Varianta 1:
+	//https://drive.google.com/file/d/1gq_m2I0qM3J2gdwyEKEEiTQA5-if2C3y/view?usp=drive_link
 	/*
 	main
 		- Th1(7)
