@@ -26,26 +26,25 @@ public class Stefanita extends Thread {
 		return pare ? value % 2 == 0 : value % 2 != 0;
 	}
 
-	private void afiseazaGrup(int[] sume, String[] pozitii) {
-		int a = sume[0] + sume[1];
-		int b = sume[2] + sume[3];
+	private void afiseazaGrup(int[] valori1, int[] valori2) {
+		int suma = (valori1[0] + valori2[0]) + (valori1[1] + valori2[1]);
 
 		System.out.println(
 				getName() + " "
-				+ sume[0] + " + " + sume[1] + " = " + a + "  "
-				+ sume[2] + " + " + sume[3] + " = " + b + "  "
-				+ a + " + " + b + " = " + (a + b)
+				+ "(" + valori1[0] + " + " + valori2[0] + ") + "
+				+ "(" + valori1[1] + " + " + valori2[1] + ") = "
+				+ suma
 		);
 	}
-
 
 
 	@Override
 	public void run() {
 		int nr1 = poz;
-		int[] sumeGrup = new int[4];
-		String[] pozitiiGrup = new String[4];
-		int nrSumeGrup = 0;
+
+		int[] valori1Grup = new int[2];
+		int[] valori2Grup = new int[2];
+		int nrPerechiGrup = 0;
 
 		while (tablouValid(tablou, nr1)) {
 			boolean perecheGasita = false;
@@ -55,16 +54,13 @@ public class Stefanita extends Thread {
 
 				while (nr2 != -1) {
 					if (matchesParity(tablou[nr2])) {
-						int sum = tablou[nr1] + tablou[nr2];
+						valori1Grup[nrPerechiGrup] = tablou[nr1];
+						valori2Grup[nrPerechiGrup] = tablou[nr2];
+						nrPerechiGrup++;
 
-
-						sumeGrup[nrSumeGrup] = sum;
-						pozitiiGrup[nrSumeGrup] = nr1 + "-" + nr2;
-						nrSumeGrup++;
-
-						if (nrSumeGrup == 4) {
-							afiseazaGrup(sumeGrup, pozitiiGrup);
-							nrSumeGrup = 0;
+						if (nrPerechiGrup == 2) {
+							afiseazaGrup(valori1Grup, valori2Grup);
+							nrPerechiGrup = 0;
 						}
 
 						nr1 = positieNoua(asc, tablou, nr2);
@@ -81,6 +77,8 @@ public class Stefanita extends Thread {
 			}
 		}
 	}
+
+
 
 
 
