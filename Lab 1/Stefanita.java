@@ -25,10 +25,27 @@ public class Stefanita extends Thread {
 	public boolean matchesParity(int value) {
 		return pare ? value % 2 == 0 : value % 2 != 0;
 	}
+
+	private void afiseazaGrup(int[] sume, String[] pozitii) {
+		int a = sume[0] + sume[1];
+		int b = sume[2] + sume[3];
+
+		System.out.println(
+				getName() + " "
+				+ sume[0] + " + " + sume[1] + " = " + a + "  "
+				+ sume[2] + " + " + sume[3] + " = " + b + "  "
+				+ a + " + " + b + " = " + (a + b)
+		);
+	}
+
+
+
 	@Override
 	public void run() {
 		int nr1 = poz;
-		int sumTotal = 0;
+		int[] sumeGrup = new int[4];
+		String[] pozitiiGrup = new String[4];
+		int nrSumeGrup = 0;
 
 		while (tablouValid(tablou, nr1)) {
 			boolean perecheGasita = false;
@@ -39,20 +56,32 @@ public class Stefanita extends Thread {
 				while (nr2 != -1) {
 					if (matchesParity(tablou[nr2])) {
 						int sum = tablou[nr1] + tablou[nr2];
-						sumTotal += sum;
 
-						System.out.println(getName() + " poz val 1: " + nr1 + " " + tablou[nr1]+ ", poz val 2: " + nr2 + " " + tablou[nr2]	+ ", sum: " + sum + ", suma finala: " + sumTotal);
+
+						sumeGrup[nrSumeGrup] = sum;
+						pozitiiGrup[nrSumeGrup] = nr1 + "-" + nr2;
+						nrSumeGrup++;
+
+						if (nrSumeGrup == 4) {
+							afiseazaGrup(sumeGrup, pozitiiGrup);
+							nrSumeGrup = 0;
+						}
 
 						nr1 = positieNoua(asc, tablou, nr2);
 						perecheGasita = true;
 						break;
 					}
+
 					nr2 = positieNoua(asc, tablou, nr2);
 				}
 			}
+
 			if (!perecheGasita) {
 				nr1 = positieNoua(asc, tablou, nr1);
 			}
 		}
 	}
+
+
+
 }
