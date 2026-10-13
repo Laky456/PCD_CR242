@@ -41,7 +41,7 @@ public class Stefanita extends Thread {
 						int sum = tablou[nr1] + tablou[nr2];
 						sumTotal += sum;
 
-						System.out.println(getName() + " poz val 1: " + nr1 + " " + tablou[nr1]+ ", poz val 2: " + nr2 + " " + tablou[nr2]	+ ", sum: " + sum);
+						System.out.println(getName() + " poz val 1: " + nr1 + " " + tablou[nr1]+ ", poz val 2: " + nr2 + " " + tablou[nr2]	+ ", sum: " + sum + ", suma finala: " + sumTotal);
 
 						nr1 = positieNoua(asc, tablou, nr2);
 						perecheGasita = true;
@@ -54,6 +54,5 @@ public class Stefanita extends Thread {
 				nr1 = positieNoua(asc, tablou, nr1);
 			}
 		}
-		System.out.println(getName() + " suma totala " + sumTotal);
 	}
 }
