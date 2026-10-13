@@ -66,7 +66,7 @@ class Sum1 extends Thread
   public void run() {
     int suma1=0,suma2=0,suma=0;
     int i=from;
-
+    int k = 0;
     int sum_t = 0;
     while(i!=to){
       if(tablou[i] % 2 == 1){
@@ -77,9 +77,16 @@ class Sum1 extends Thread
         do{
           if(tablou[i] % 2 == 1){
             suma2=i;
+            k++;
             suma = tablou[suma1] + tablou[suma2];
             System.out.println(getName()+": Suma1=" + tablou[suma1] + " ;  Suma2=" + tablou[suma2] + ";  Suma=" + suma + ".");
             sum_t += suma;
+            if(k == 2){
+
+              System.out.println(getName()+ " Suma totala: " + sum_t);
+              k = 0;
+              sum_t = 0;
+            }
             break;
           }
           i += step;
@@ -91,7 +98,6 @@ class Sum1 extends Thread
 
     }
     
-      System.out.println(getName()+ " Suma totala: " + sum_t);
   }
 }
 
@@ -125,10 +131,15 @@ class Sum2 extends Thread
       sum = arr[i] + arr[i+1];
       System.out.println(getName()+": Sum1=" + arr[i]+ " ;  Sum2=" + arr[i+1] + ";  Sum=" + sum + ".");
       sum_t += sum ;
+
+      if(i % 4 == 0 && i != 0){
+        //System.out.println(getName()+ " Suma totala: " + sum_t);
+        sum_t = 0;
+      }
+
     }
 
 
-      System.out.println(getName()+ " Suma totala: " + sum_t);
   }
   
 }
