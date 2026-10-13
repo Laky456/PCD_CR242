@@ -25,7 +25,10 @@ public final class Main {
         for (int i = 0; i < mas.length; i++) {
             mas[i] = random.nextInt(100) + 1;
         }
-        output.accept("mas = " + Arrays.toString(mas) + System.lineSeparator());
+        output.accept("mas[0..49]  = " + Arrays.toString(Arrays.copyOfRange(mas, 0, 50))
+                + System.lineSeparator());
+        output.accept("mas[50..99] = " + Arrays.toString(Arrays.copyOfRange(mas, 50, 100))
+                + System.lineSeparator());
         output.accept("Pozitii impare = indici Java 1, 3, ..., 99.\n");
 
         Student1Threads student1 = new Student1Threads(mas, output);
