@@ -1,5 +1,5 @@
 import javax.swing.*;
-
+//test
 public class LucrareStudent2 {
     private final int[] mas;
     private final JTextArea out;
