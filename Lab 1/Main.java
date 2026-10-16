@@ -27,7 +27,7 @@ public class Main {
 
         // clasele studentilor (fiecare cu 2 fire) -> 4 fire in total
         Vlad s1 = new Vlad(mas, out);
-        LucrareStudent2 s2 = new LucrareStudent2(mas, out);
+        Adrian s2 = new Adrian(mas, out);
         s1.start();
         s2.start();
 
@@ -36,8 +36,7 @@ public class Main {
         s2.join();
 
         // informatii despre studenti, litera cu litera, la 100 ms
-        String info = "\nLucrare efectuata de: Verdes Vlad si Nume2 Prenume2, "
-                + "grupa CR-242, varianta 7\n";
+        String info = "\nLucrare efectuata de: Verdes Vlad si Neagu Adrian, grupa CR-242, varianta 7\n";
         for (char c : info.toCharArray()) {
             SwingUtilities.invokeLater(() -> out.append(String.valueOf(c)));
             Thread.sleep(100);
