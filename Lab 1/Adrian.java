@@ -41,27 +41,36 @@ public class Adrian {
         @Override
         public void run() {
             String name = Thread.currentThread().getName();
-            long total = 0;
-            int pairNo = 0;
-            Integer first = null; // primul numar par din pereche
+            int a = 0, b = 0, c = 0; // primele 3 numere pare din grup
+            int found = 0; // cate numere pare avem in grupul curent
 
             for (int i = start; i >= 0 && i < mas.length; i += step) {
-                if (mas[i] % 2 != 0) {
+                int x = mas[i];
+                if (x % 2 != 0) {
                     continue;
                 }
-                if (first == null) {
-                    first = mas[i];
-                } else {
-                    total += (long) first * mas[i]; // suma se calculeaza intr-un singur rand
-                    pairNo++;
-                    print(String.format("%s | perechea %2d: %3d * %3d = %5d | suma = %6d",
-                            name, pairNo, first, mas[i], (long) first * mas[i], total));
-                    first = null;
+                switch (found) {
+                    case 0:
+                        a = x;
+                        found = 1;
+                        break;
+                    case 1:
+                        b = x;
+                        found = 2;
+                        break;
+                    case 2:
+                        c = x;
+                        found = 3;
+                        break;
+                    default:
+                        // x este al 4-lea numar par: calculam totul intr-un rand
+                        print(name + " | " + a + " " + b + " " + c + " " + x
+                                + " | " + (a * b) + " + " + (c * x)
+                                + " = " + (a * b + c * x));
+                        found = 0;
                 }
             }
-            // un eventual numar par ramas fara pereche nu se ia in calcul
-            print(name + " | REZULTAT: suma produselor = " + total
-                    + " (" + pairNo + " perechi)");
+            // grupul incomplet (< 4 numere pare) nu se afiseaza
         }
     }
 }
