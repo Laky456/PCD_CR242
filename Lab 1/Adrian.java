@@ -65,8 +65,9 @@ public class Adrian {
                     default:
                         // x este al 4-lea numar par: calculam totul intr-un rand
                         print(name + " | " + a + " " + b + " " + c + " " + x
-                                + " | " + (a * b) + " + " + (c * x)
-                                + " = " + (a * b + c * x));
+                                + " | " + a + "*" + b + "=" + (a * b)
+                                + " | " + c + "*" + x + "=" + (c * x)
+                                + " | suma = " + (a * b + c * x));
                         found = 0;
                 }
             }
