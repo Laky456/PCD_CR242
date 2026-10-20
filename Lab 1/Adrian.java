@@ -1,3 +1,8 @@
+/**
+ * Varianta 7:
+ *  Th1 - sumele produselor numerelor pare, doua cate doua, de la primul element
+ *  Th2 - sumele produselor numerelor pare, doua cate doua, de la ultimul element
+ */
 import javax.swing.*;
 
 public class Adrian {
