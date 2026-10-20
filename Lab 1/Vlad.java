@@ -1,5 +1,10 @@
 import javax.swing.*;
 
+/**
+ * Varianta 7:
+ *  Th1 - sumele produselor numerelor pare, doua cate doua, de la primul element
+ *  Th2 - sumele produselor numerelor pare, doua cate doua, de la ultimul element
+ */
 public class Vlad{
     private final int[] mas;
     private final JTextArea out;
